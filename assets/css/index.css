@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+/******* Fonts Import Start **********/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+/********* Fonts Face CSS End **********/
+
+/******* Common Element CSS Start ******/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+}
+
+/* welcome start */
+
+.welcome h1.title,
+.footer-copyright a {
+	font-family: 'Architects Daughter', cursive;
+	text-transform: uppercase;
+	font-weight: 900;
+}
+.welcome {
+	width: 100vw;
+	height: auto;
+	min-height: 100vh;
+	background: rgb(36, 40, 47);
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+#ryan{
+	margin-top: -50px;
+	margin-bottom: 100px;
+}
+
+/* welcome end */
+
+
+/* character card start */
+:root {
+	--card-height: 300px;
+	--card-width: calc(var(--card-height) / 1.5);
+}
+
+.char{
+	display: flex;
+	width: 100vw;
+	height: auto;
+	justify-content: space-evenly;
+	margin-top: 100px;
+
+}
+@media only screen and (max-width: 600px) {
+	.char {
+			display: grid;
+			grid-template-columns: auto;
+			grid-gap: 100px;
+			width: 100vw;
+			height: auto;
+			margin-top: 100px;
+	
+		}
+}
+
+.char .card {
+	width: var(--card-width);
+	height: var(--card-height);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding: 0 0px;
+	perspective: 2500px;
+	margin: 0 50px;
+	background-color: rgb(68, 68, 68,0);
+}
+
+.char .cover-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.wrapper {
+	transition: all 0.5s;
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+
+.card:hover .wrapper {
+	transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+	box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper::before,
+.wrapper::after {
+	content: "";
+	opacity: 0;
+	width: 100%;
+	height: 80px;
+	transition: all 0.5s;
+	position: absolute;
+	left: 0;
+}
+
+.wrapper::before {
+	top: 0;
+	height: 100%;
+	background-image: linear-gradient(to top,
+			transparent 46%,
+			rgba(12, 13, 19, 0.5) 68%,
+			rgba(12, 13, 19) 97%);
+}
+
+.wrapper::after {
+	bottom: 0;
+	opacity: 1;
+	background-image: linear-gradient(to bottom,
+			transparent 46%,
+			rgba(12, 13, 19, 0.5) 68%,
+			rgba(12, 13, 19) 97%);
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+	opacity: 1;
+}
+
+.card:hover .wrapper::after {
+	height: 120px;
+}
+
+.title {
+	width: 100%;
+	transition: transform 0.5s;
+}
+
+.card:hover .title {
+	transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+	width: 100%;
+	opacity: 0;
+	transition: all 0.5s;
+	position: absolute;
+	z-index: -1;
+}
+
+.card:hover .character {
+	opacity: 1;
+	transform: translate3d(0%, -30%, 100px);
+}
